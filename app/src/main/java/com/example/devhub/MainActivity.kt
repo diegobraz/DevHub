@@ -17,7 +17,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -40,10 +39,13 @@ class MainActivity : ComponentActivity() {
 
     @Composable
     fun LoadInformation() {
-        Box{
+        Box {
             Box(Modifier.fillMaxWidth().background(Color.Gray).height(150.dp))
-            Column(modifier = Modifier.fillMaxWidth().align(alignment = Alignment.TopCenter).padding(top = 75.dp),
-                horizontalAlignment = Alignment.CenterHorizontally) {
+            Column(
+                modifier = Modifier.fillMaxWidth().align(alignment = Alignment.TopCenter)
+                    .padding(top = 75.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
                 Image(
                     painter = painterResource(R.drawable.photo_profile),
                     contentDescription = getString(R.string.profile_photo),
@@ -56,8 +58,14 @@ class MainActivity : ComponentActivity() {
                     "Diego Braz",
                     textStyle = TextStyle(fontSize = 30.sp, fontWeight = FontWeight.Bold)
                 )
-                SetText("diegobraz", textStyle = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.Bold))
-                SetText("Android Developer",textStyle = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.Normal))
+                SetText(
+                    "diegobraz",
+                    textStyle = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.Bold)
+                )
+                SetText(
+                    "Android Developer",
+                    textStyle = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.Normal)
+                )
             }
         }
     }
