@@ -1,5 +1,6 @@
 package com.example.devhub.ui
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -8,7 +9,8 @@ import com.example.devhub.model.User
 import kotlinx.coroutines.launch
 
 class MainViewModel: ViewModel() {
-     var userResponse: MutableLiveData<User> = MutableLiveData()
+     private var userResponse_: MutableLiveData<User> = MutableLiveData()
+     val userResponse : LiveData<User> = userResponse_
       var errorMessage : MutableLiveData<String> = MutableLiveData()
 
     fun getUser(name:String){
@@ -17,7 +19,7 @@ class MainViewModel: ViewModel() {
             try {
                 val user = apiService?.getUser(name)
                 if (user != null) {
-                    userResponse.value = user
+                    userResponse_.value = user
                 }
             }catch (e:Exception){
                 errorMessage.value = e.message.toString()
