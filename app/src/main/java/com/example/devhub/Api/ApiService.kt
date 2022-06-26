@@ -1,5 +1,6 @@
 package com.example.devhub.Api
 
+import com.example.devhub.model.Repositories
 import com.example.devhub.model.User
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -9,6 +10,9 @@ import retrofit2.http.Path
 interface ApiService {
     @GET("users/{name}")
     suspend fun getUser(@Path("name")name:String):User
+
+    @GET("users/{name}/repos")
+    suspend fun getAllRepositories(@Path("name")name:String):Repositories
 
     companion object {
         var apiService: ApiService? = null
