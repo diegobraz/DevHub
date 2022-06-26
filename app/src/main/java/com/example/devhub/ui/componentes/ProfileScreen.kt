@@ -24,7 +24,7 @@ import com.example.devhub.model.User
 
 
 @Composable
-fun LoadInformation(user: LiveData<User>) {
+fun LoadProfileInformation(user: LiveData<User>) {
     val responseUserState by user.observeAsState()
     Box {
         Box(Modifier.fillMaxWidth().background(Color.Gray).height(150.dp))
