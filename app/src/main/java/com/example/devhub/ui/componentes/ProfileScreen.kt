@@ -24,8 +24,8 @@ import com.example.devhub.model.User
 
 
 @Composable
-fun LoadProfileInformation(user: LiveData<User>) {
-    val responseUserState by user.observeAsState()
+fun LoadProfileInformation(user: User) {
+
     Box {
         Box(Modifier.fillMaxWidth().background(Color.Gray).height(150.dp))
         Column(
@@ -34,7 +34,7 @@ fun LoadProfileInformation(user: LiveData<User>) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             AsyncImage(
-                model = responseUserState?.avatar_url,
+                model = user.avatar_url,
                 contentDescription = stringResource(R.string.profile_photo),
                 modifier = Modifier
                     .padding(all = 4.dp)
@@ -42,7 +42,7 @@ fun LoadProfileInformation(user: LiveData<User>) {
                     .clip(CircleShape)
             )
             SetText(
-                responseUserState?.name ?: "teste",
+                user.name ,
                 textStyle = TextStyle(
                     fontSize = 30.sp,
                     fontWeight = FontWeight.Bold,
@@ -50,7 +50,7 @@ fun LoadProfileInformation(user: LiveData<User>) {
                 )
             )
             SetText(
-                responseUserState?.login ?: "teste",
+                user.login ,
                 textStyle = TextStyle(
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
@@ -58,7 +58,7 @@ fun LoadProfileInformation(user: LiveData<User>) {
                 )
             )
             SetText(
-                responseUserState?.bio ?: "teste",
+                user.bio,
                 textStyle = TextStyle(
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Normal,

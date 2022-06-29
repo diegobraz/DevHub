@@ -33,8 +33,11 @@ class MainActivity : ComponentActivity() {
                     mainViewModel.getUser("diegobraz")
                     mainViewModel.getAllRepositories("diegobraz")
                     val allrepositorie by mainViewModel.allrepositories.observeAsState()
+                    val userProfile by mainViewModel.userResponse.observeAsState()
                     Column {
-                        LoadProfileInformation(mainViewModel.userResponse)
+                       userProfile?.let {user ->
+                           LoadProfileInformation(user)
+                       }
                         LazyColumn(modifier = Modifier.padding(top = 8.dp)) {
                             items(allrepositorie?.toList() ?: emptyList()){ repositoriesItem ->
                                    RepositoryItem(repositoriesItem)
