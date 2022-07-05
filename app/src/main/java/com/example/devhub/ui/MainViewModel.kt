@@ -10,10 +10,10 @@ import com.example.devhub.model.User
 import kotlinx.coroutines.launch
 
 class MainViewModel: ViewModel() {
-     private var userResponse_: MutableLiveData<User> = MutableLiveData()
+     private val userResponse_: MutableLiveData<User> = MutableLiveData()
      val userResponse : LiveData<User> = userResponse_
 
-    private var allrepositories_: MutableLiveData<Repositories> = MutableLiveData()
+    private val allrepositories_: MutableLiveData<Repositories> = MutableLiveData()
     val allrepositories : LiveData<Repositories> = allrepositories_
 
     var errorMessage : MutableLiveData<String> = MutableLiveData()
