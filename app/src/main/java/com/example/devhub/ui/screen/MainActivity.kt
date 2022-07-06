@@ -14,6 +14,7 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.modifier.modifierLocalOf
 import androidx.compose.ui.unit.dp
 import com.example.devhub.ui.MainViewModel
 import com.example.devhub.ui.componentes.LoadProfileInformation
@@ -35,10 +36,12 @@ class MainActivity : ComponentActivity() {
                     val allRepositories by mainViewModel.allrepositories.observeAsState()
                     val userProfile by mainViewModel.userResponse.observeAsState()
                     Column {
-                       userProfile?.let {user ->
-                           LoadProfileInformation(user)
-                       }
-                        LazyColumn(modifier = Modifier.padding(top = 8.dp)) {
+                        LazyColumn {
+                            item(modifierLocalOf {  }) {
+                                userProfile?.let {user ->
+                                    LoadProfileInformation(user)
+                                }
+                            }
                             items(allRepositories?.toList() ?: emptyList()){ repositoriesItem ->
                                    RepositoryItem(repositoriesItem)
                             }
