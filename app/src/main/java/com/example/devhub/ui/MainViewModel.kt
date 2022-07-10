@@ -9,16 +9,16 @@ import com.example.devhub.model.Repositories
 import com.example.devhub.model.User
 import kotlinx.coroutines.launch
 
-class MainViewModel: ViewModel() {
-     private val userResponse_: MutableLiveData<User> = MutableLiveData()
-     val userResponse : LiveData<User> = userResponse_
+class MainViewModel : ViewModel() {
+    private val userResponse_: MutableLiveData<User> = MutableLiveData()
+    val userResponse: LiveData<User> = userResponse_
 
     private val allrepositories_: MutableLiveData<Repositories> = MutableLiveData()
-    val allrepositories : LiveData<Repositories> = allrepositories_
+    val allrepositories: LiveData<Repositories> = allrepositories_
 
-    var errorMessage : MutableLiveData<String> = MutableLiveData()
+    var errorMessage: MutableLiveData<String> = MutableLiveData()
 
-    fun getUser(name:String){
+    fun getUser(name: String) {
         viewModelScope.launch {
             val apiService = ApiService.getInstance()
             try {
@@ -26,21 +26,21 @@ class MainViewModel: ViewModel() {
                 if (user != null) {
                     userResponse_.value = user
                 }
-            }catch (e:Exception){
+            } catch (e: Exception) {
                 errorMessage.value = e.message.toString()
             }
         }
     }
 
-    fun getAllRepositories(name:String){
+    fun getAllRepositories(name: String) {
         viewModelScope.launch {
             val apiService = ApiService.getInstance()
             try {
                 val repositories = apiService?.getAllRepositories(name)
-                if (repositories!= null) {
-                    allrepositories_.value =  repositories
+                if (repositories != null) {
+                    allrepositories_.value = repositories
                 }
-            }catch (e:Exception){
+            } catch (e: Exception) {
                 errorMessage.value = e.message.toString()
             }
         }
