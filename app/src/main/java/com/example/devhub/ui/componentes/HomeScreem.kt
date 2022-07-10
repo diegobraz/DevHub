@@ -11,7 +11,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.devhub.ui.MainViewModel
 
 @Composable
-fun HomeScreem(user: String? = null, mainViewModel: MainViewModel) {
+fun HomeScreen(user: String? = null, mainViewModel: MainViewModel) {
     if (user != null) {
         mainViewModel.getUser(user)
         mainViewModel.getAllRepositories(user)
@@ -34,6 +34,6 @@ fun HomeScreem(user: String? = null, mainViewModel: MainViewModel) {
 
 @Composable
 @Preview(showBackground = true)
-fun HomeScreemPreview() {
-    HomeScreem("diegobraz",mainViewModel = viewModel())
+fun HomeScreenPreview() {
+    HomeScreen( mainViewModel = viewModel())
 }
